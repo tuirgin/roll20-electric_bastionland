@@ -1,0 +1,315 @@
+<!-- Character Sheet DIV -->
+<div class="main">
+    <div class="character section">
+        <table class="character name sub-section">
+            <tr>
+                <th class="character name" scope="row">Name</th>
+                <td>
+                    <input class="character name"
+                           name="attr_character_name"
+                           type="text"
+                    />
+                </td>
+            </tr>
+        </table>
+        <div class="character background sub-section">
+            <h1>Background</h1>
+            <table class="character background sub-section">
+                <tr>
+                    <td></td>
+                    <td colspan="2" >
+                        <input class="occupation"
+                               name="attr_background"
+                               placeholder="Occupation"
+                               type="text"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" >£</th>
+                    <td>
+                        <textarea class="background"
+                                  name="attr_background_pounds"
+                                  placeholder="Enter the value from your background’s starting £ table"
+                        ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" >HP</th>
+                    <td>
+                        <textarea class="background"
+                                  name="attr_background_hp"
+                                  placeholder="Enter the value from your background’s starting HP table"
+                        ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" >Info</th>
+                    <td>
+                        <textarea class="background"
+                                  name="attr_background_info"
+                        ></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="character inventory sub-section">
+            <h1>Inventory</h1>
+            <table class="inventory">
+                <tr>
+                    <th scope="row">£</th>
+                    <td>
+                        <input class="money numeric"
+                               name="attr_pounds"
+                               type="text"
+                        />
+                    </td>
+                </tr>
+            </table>
+            <label>Items</label>
+            <fieldset class="repeating_item">
+                <input class="item_name"
+                       name="attr_item"
+                       placeholder="Item Name"
+                       type="text"  />
+            </fieldset>
+        </div>
+        <div class="character notes sub-section">
+            <h1>Notes</h1>
+            <textarea class="notes"
+                      name="attr_notes"
+            ></textarea>
+        </div>
+    </div>
+    <div class="action section">
+        <div class="stats_grid sub-section">
+            <h1>Stats</h1>
+            <div class="ability_scores sub-section">
+                <table>
+                    <colgroup>
+                        <col class="stat">
+                        <col class="max">
+                        <col class="cur">
+                        <col class="roll">
+                    </colgroup>
+                    <thead><th></th><th>Max</th><th>Cur</th><th></th></thead>
+                    <tr>
+                        <th scope="row">Strength</th>
+                        <td><input
+                                class="max numeric"
+                                name="attr_str_max"
+                                type="number"
+                                value="10"
+                            /></td>
+                        <td><input
+                                class="cur numeric"
+                                name="attr_str"
+                                type="number"
+                                value="10"
+                            /></td>
+                        <td><button
+                                name="roll_StrSave"
+                                title="Strength Save"
+                                type="roll"
+                                value="&{template:eb} {{character=@{character_name}}} {{name=Strength Save}} {{save=[[1d20]]}} {{stat=Strength}} {{stat_value=[[@{str}]]}}"
+                            ></button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Dexterity</th>
+                        <td><input
+                                class="max numeric"
+                                name="attr_dex_max"
+                                type="number"
+                                value="10"
+                            /></td>
+                        <td><input
+                                class="cur numeric"
+                                name="attr_dex"
+                                type="number"
+                                value="10"
+                            /></td>
+                        <td><button
+                                name="roll_DexSave"
+                                title="Dexterity Save"
+                                type="roll"
+                                value="&{template:eb} {{character=@{character_name}}} {{name=Dexterity Save}} {{save=[[1d20]]}} {{stat=Dexterity}} {{stat_value=[[@{dex}]]}}"
+                            ></button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Charisma</th>
+                        <td><input
+                                class="max numeric"
+                                name="attr_cha_max"
+                                type="number"
+                                value="10"
+                            /></td>
+                        <td><input
+                                class="cur numeric"
+                                name="attr_cha"
+                                type="number"
+                                value="10"
+                            /></td>
+                        <td><button
+                                name="roll_ChaSave"
+                                title="Charisma Save"
+                                type="roll"
+                                value="&{template:eb} {{character=@{character_name}}} {{name=Charisma Save}} {{save=[[1d20]]}} {{stat=Charisma}} {{stat_value=[[@{cha}]]}}"
+                            ></button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="combat_stats sub-section">
+                <table>
+                    <colgroup>
+                        <col class="stat">
+                        <col class="max">
+                        <col class="cur">
+                    </colgroup>
+                    <thead><th></th><th>Max</th><th>Cur</th></thead>
+                    <tr>
+                        <th
+                            scope="row">HP</th>
+                        <td><input
+                                class="max numeric"
+                                name="attr_hp_max"
+                                type="number" /></td>
+                        <td><input
+                                class="cur numeric"
+                                name="attr_hp"
+                                type="number" /></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Armor</th>
+                        <td><input class="numeric"
+                                   name="attr_armor"
+                                   type="number"
+                            /></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="stats other sub-section">
+                <table class="other">
+                    <tr>
+                        <th scope="row">Effect(s)</th>
+                        <td><input class="effects"
+                                   name="attr_effects"
+                            />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="stats weapons sub-section">
+            <h1>Attacks</h1>
+            <div class="weapons_grid">
+                <button class="weapons_roll"
+                        name="roll_attack"
+                        title="Roll Impaired Damage"
+                        type="roll"
+                        value="&{template:eb} {{character=@{character_name}}} {{name=Impaired Attack}} {{damage=[[1d4]]}}"
+                ></button>
+                <input class="weapons_name"
+                       disabled
+                       name="attr_weapon"
+                       placeholder="Impaired Attack"
+                       type="text" />
+                <select class="weapons_damage menu"
+                        disabled
+                        name="attr_damage">
+                    <option selected="selected" value="d4">d4</option>
+                </select>
+                <input class="weapons_tag"
+                       disabled
+                       name="attr_weapon_tag"
+                       placeholder="No bonus damage"
+                       type="text" />
+            </div>
+            <fieldset class="repeating_weapon">
+                <div class="weapons_grid">
+                    <button class="weapons_roll"
+                            name="roll_attack"
+                            title="Roll Weapon Damage"
+                            type="roll"
+                            value="&{template:eb} {{character=@{character_name}}} {{name=@{weapon}}} {{damage=[[@{damage}]]}}"
+                    ></button>
+                    <input class="weapons_name"
+                           name="attr_weapon"
+                           placeholder="Weapon Name"
+                           type="text" />
+                    <select class="weapons_damage menu" name="attr_damage">
+                        <option value="d4">d4</option>
+                        <option selected="selected" value="d6">d6</option>
+                        <option value="d8">d8</option>
+                        <option value="d10">d10</option>
+                        <option value="d12">d12</option>
+                    </select>
+                    <input class="weapons_tag"
+                           name="attr_weapon_tag"
+                           placeholder="Weapon Detail"
+                           type="text" />
+                </div>
+            </fieldset>
+        </div>
+        <div class="stats armor sub-section">
+            <h1>Armor</h1>
+            <fieldset class="repeating_armor">
+                <div class="armor_grid">
+                    <input class="armor_enabled"
+                           name="attr_enabled"
+                           type="checkbox" />
+                    <input class="armor_name"
+                           name="attr_armor"
+                           placeholder="Armor Name"
+                           type="text" />
+                    <select class="armor_rating menu" name="attr_armor_rating">
+                        <option value="+1">+1</option>
+                        <option selected="selected" value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <input class="armor_tag"
+                           name="attr_armor_tag"
+                           placeholder="Armor Detail"
+                           type="text" />
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+<!-- Roll Templates -->
+<rolltemplate class="sheet-rolltemplate-eb">
+    <div class="roll container">
+        <p class="player">{{character}}</p>
+        <h1 class="roll">{{name}}</h1>
+        {{#damage}}
+        <div class="template-row damage">
+            <span class="damage label">Damage: </span>{{damage}}
+        </div>
+        {{/damage}}
+        {{#save}}
+        <p class="save">Roll equal or under to succeed.</p>
+        <table class="save">
+            <tr class="template-row">
+                <th scope="row">{{stat}}:</th>
+                <td class="numeric">{{stat_value}}</td>
+            </tr>
+            <tr class="template-row">
+                <th scope="row">Roll:</th>
+                <td class="numeric">{{save}}</td>
+            </tr>
+        </table>
+        {{/save}}
+        {{#rollBetween() save 1 stat_value}}
+        <p class="outcome success">
+            SUCCESS
+        </p>
+        {{/rollBetween() save 1 stat_value}}
+        {{#rollGreater() save stat_value}}
+        <p class="outcome failure">
+            FAILURE
+        </p>
+        {{/rollGreater() save stat_value}}
+    </div>
+</rolltemplate>
