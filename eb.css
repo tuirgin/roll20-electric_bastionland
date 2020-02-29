@@ -39,14 +39,40 @@
     display: grid;
     grid-gap: 4px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "character stats";
+    grid-template-areas: "character actions";
 }
 
-.sheet-action {
+.sheet-names_grid {
     display: grid;
     grid-gap: 4px;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas: "character_label character_name character_pronouns"
+                         "player_label    player_name    player_pronouns";
+}
+
+.sheet-background_grid {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 1fr 8fr;
+    grid-template-areas: "section_label           section_label"
+                         "occupation_label        occupation"
+                         "background_pounds_label background_pounds"
+                         "background_hp_label     background_hp"
+                         "background_info_label   background_info";
+}
+
+.sheet-currency_grid {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 1fr 8fr;
+    grid-template-areas: "currency_label currency_value";
+}
+
+.sheet-action.sheet_column {
+    display: grid;
+    grid-area: actions;
+    grid-gap: 4px;
     grid-template-areas: "stats"
-                         "other"
                          "weapons"
                          "armor";
 }
@@ -55,11 +81,39 @@
     display: grid;
     grid-area: stats;
     grid-gap: 1em;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: "header    header"
-                         "abilities combat"
-                         "other     other";
-    grid-template-rows: 1.2em .8fr 2em;
+    grid-template-columns: 3fr 2fr;
+    grid-template-areas: "ability_scores combat_scores"
+                         "effects        effects";
+    grid-template-rows: 4fr 2em;
+}
+
+.sheet-ability_scores_grid {
+    display: grid;
+    grid-area: ability_scores;
+    grid-gap: 4px;
+    grid-template-areas: "ability_blank_label ability_max_label ability_cur_label ability_save_label"
+                         "str_label           str_max           str_cur           str_save"
+                         "dex_label           dex_max           dex_cur           dex_save"
+                         "cha_label           cha_max           cha_cur           cha_save";
+    grid-template-rows: repeat(4, 2.5em);
+    text-align: center;
+}
+
+.sheet-combat_scores_grid {
+    display: grid;
+    grid-area: combat_scores;
+    grid-gap: 4px;
+    grid-template-areas: "combat_blank_label combat_max_label combat_cur_label"
+                         "hp_label           hp_max           hp_cur"
+                         "armor_label        armor            armor_blank";
+    grid-template-rows: repeat(3, 2.5em);
+}
+
+.sheet-effects_grid {
+    display: grid;
+    grid-area: effects;
+    grid-gap: 4px;
+    grid-template-areas: "effects_label effects_value";
 }
 
 .sheet-weapons_grid {
@@ -81,16 +135,18 @@
 .sheet-main {
     font-family: var(--default-sans);
     font-size: 1rem;
-    padding: 0;
-    padding-right: 2em;
 }
 
-.sheet-main h1 {
-    font-size: 1.5rem;
+.sheet-label {
     font-weight: bold;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+}
+
+.sheet-numeric {
+    font-family: 'Fira Mono';
+}
+
+.sheet-row_head {
+    text-align: right;
 }
 
 button {
@@ -110,117 +166,136 @@ input, select {
     padding: 0 4px;
 }
 
-.sheet-numeric {
-    font-family: 'Fira Mono';
-}
-
 input.sheet-numeric, select.sheet-menu{
     text-align: right;
     text-align-last: right;
 }
 
-label {
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
 textarea {
     box-sizing: border-box;
-    height: 4em;
+    height: 3em;
     margin: 0;
     width: 100%;
-}
-
-tr>th:first-child {
-    text-align: right !important;
-}
-
-td, th {
-    padding: 2px;
-    text-align: center;
-}
-
-.sheet-section {
-    padding: 1em;
-}
-
-.sheet-flex-col {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-}
-
-.sheet-flex-center {
-    align-items: center;
-    justify-content: center;
-}
-
-.sheet-max {
-    grid-area: max;
-    grid-column-start: 2;
-    grid-column-end; 2;
-}
-
-.sheet-cur {
-    grid-area: cur;
-    grid-column-start: 3;
-    grid-column-end; 3;
 }
 
 /* Sections */
 
+div.sheet-character.sheet-column, div.sheet-action.sheet-column {
+    background-color: var(--teal-light);
+    border: 1px solid var(--teal-dark);
+    padding: 1em;
+}
+
 /* Character & Background*/
 
 div.sheet-character.sheet-section {
-    background-color: var(--teal-light);
-    border: 2px groove var(--teal-dark);
     grid-area: character;
 }
 
-.sheet-character table, .sheet-action table {
-    min-width: 20em;
-    width: 100%;
+div.sheet-character.sheet-label {
+    grid-area: character_label;
 }
 
-div.sheet-inventory, div.sheet-notes {
-    border-top: 1px solid var(--teal-dark);
-    margin-top: 1em;
-}
-tr>th.sheet-background:first-child, tr>th.sheet-inventory:first-child {
-    text-align: center !important;
+div.sheet-character.sheet-name {
+    grid-area: character_name;
 }
 
-input.sheet-background, textarea.sheet-background {
-    width: 100%;
+div.sheet-character.sheet-pronouns {
+    grid-area: character_pronouns;
 }
 
-table.sheet-background, tr.sheet-background, td.sheet-background {
-    margin: 0;
-    padding: 0;
-    vertical-align: center;
+div.sheet-player.sheet-label {
+    grid-area: player_label;
 }
 
-table.sheet-background, table.sheet-inventory {
-    width: 100%;
+div.sheet-player.sheet-name {
+    grid-area: player_name;
 }
 
-td.sheet-background {
-    vertical-align: center;
+div.sheet-player.sheet-pronouns {
+    grid-area: player_pronouns;
 }
 
-input.sheet-name, input.sheet-occupation {
-    width: 100%;
-}
-
-div.sheet-inv {
-    grid-area: inv;
-}
-
-input.sheet-money {
+.sheet-character .sheet-label {
     text-align: right;
 }
 
-input.sheet-item_name {
+.sheet-section.sheet-label {
+    border-top: 1px solid var(--teal-dark);
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 1em;
+    padding: 0;
+    padding-top: 1em;
+    text-align: center;
+}
+
+.sheet-sub_section.sheet-label {
+    font-size: 1em;
+    font-weight: bold;
+    margin-0;
+    margin-top: 1em;
+    padding: 0;
+    text-align: left;
+}
+
+div.sheet-background.sheet-section.sheet-label {
+    grid-area: section_label;
+}
+
+div.sheet-occupation.sheet-label {
+    grid-area: occupation_label;
+}
+
+div.sheet-occupation.sheet-value {
+    grid-area: occupation;
+}
+
+div.sheet-background_pounds.sheet-label {
+    grid-area: background_pounds_label;
+}
+
+div.sheet-background_pounds.sheet-value {
+    grid-area: background_pounds;
+}
+
+div.sheet-background_hp.sheet-label {
+    grid-area: background_hp_label;
+}
+
+div.sheet-background_hp.sheet-value {
+    grid-area: background_hp;
+}
+
+div.sheet-background_info.sheet-label {
+    grid-area: background_info_label;
+}
+
+div.sheet-background_info.sheet-value {
+    grid-area: background_info;
+}
+
+div.sheet-currency.sheet-label {
+    grid-area: currency_label;
+}
+
+div.sheet-currency.sheet-value {
+    grid-area: currency_value;
+}
+
+input.sheet-name, input.sheet-occupation {
+    margin: 0;
+    min-width: 10em;
+    width: 100%;
+}
+
+input.sheet-pronouns {
+    margin: 0;
+    width: 6em;
+}
+
+input.sheet-currency.sheet-value, input.sheet-item_name {
     width: 100%;
 }
 
@@ -228,8 +303,9 @@ div.sheet-notes {
     grid-area: notes;
 }
 
-label.sheet-notes {
-    text-align: center;
+textarea.sheet-notes {
+    min-height: 4em;
+    height: 10em;
 }
 
 /* Stats & Actions */
@@ -241,33 +317,125 @@ div.sheet-action.sheet-section {
     width: 100%;
 }
 
+. {
+    text-align: center;
+}
+
 div.sheet-action input {
     min-width: 3.5em;
-}
-
-div.sheet-stats_grid h1 {
-    grid-area: header;
-}
-
-div.sheet-ability_scores {
-    grid-area: abilities;
-}
-
-div.sheet-combat_stats {
-    grid-area: combat;
-}
-
-div.sheet-other {
-    grid-area: other;
-}
-
-table.sheet-other input {
     width: 100%;
 }
 
-div.sheet-weapons, div.sheet-armor {
-    border-top: 1px solid var(--teal-dark);
+.sheet-stats.sheet-section.sheet-label {
+    grid-area: stats_label;
+    margin: 1em;
+    border: none;
 }
+
+.sheet-ability.sheet-blank.sheet-label {
+    grid-area: ability_blank_label;
+}
+
+.sheet-ability.sheet-max.sheet-label {
+    grid-area: ability_max_label;
+}
+
+.sheet-ability.sheet-current.sheet-label {
+    grid-area: ability_cur_label;
+}
+
+.sheet-ability.sheet-save.sheet-label {
+    grid-area: ability_save_label;
+}
+
+.sheet-ability.sheet-strength.sheet-label {
+    grid-area: str_label;
+}
+
+.sheet-ability.sheet-strength.sheet-max.sheet-value {
+    grid-area: str_max;
+}
+
+.sheet-ability.sheet-strength.sheet-current.sheet-value {
+    grid-area: str_cur;
+}
+
+.sheet-ability.sheet-strength.sheet-save {
+    grid-area: str_save;
+}
+
+.sheet-ability.sheet-dexterity.sheet-label {
+    grid-area: dex_label;
+}
+
+.sheet-ability.sheet-dexterity.sheet-max.sheet-value {
+    grid-area: dex_max;
+}
+
+.sheet-ability.sheet-dexterity.sheet-current.sheet-value {
+    grid-area: dex_cur;
+}
+
+.sheet-ability.sheet-dexterity.sheet-save {
+    grid-area: dex_save;
+}
+
+.sheet-ability.sheet-charisma.sheet-label {
+    grid-area: cha_label;
+}
+
+.sheet-ability.sheet-charisma.sheet-max.sheet-value {
+    grid-area: cha_max;
+}
+
+.sheet-ability.sheet-charisma.sheet-current.sheet-value {
+    grid-area: cha_cur;
+}
+
+.sheet-ability.sheet-charisma.sheet-save {
+    grid-area: cha_save;
+}
+
+.sheet-combat.sheet-blank.sheet-label {
+    grid-area: combat_blank_label;
+}
+
+.sheet-combat.sheet-max.sheet-label {
+    grid-area: combat_max_label;
+}
+
+.sheet-combat.sheet-current.sheet-label {
+    grid-area: combat_cur_label;
+}
+
+.sheet-combat.sheet-hp.sheet-label {
+    grid-area: hp_label;
+}
+
+.sheet-combat.sheet-hp.sheet-max.sheet-value {
+    grid-area: hp_max;
+}
+
+.sheet-combat.sheet-hp.sheet-current.sheet-value {
+    grid-area: hp_cur;
+}
+
+.sheet-combat.sheet-armor.sheet-label {
+    grid-area: armor_label;
+}
+
+.sheet-combat.sheet-armor.sheet-max.sheet-value {
+    grid-area: armor_max;
+}
+
+.sheet-effects.sheet-label {
+    grid-area: effects_label;
+}
+
+.sheet-effects.sheet-value {
+    grid-area: effects_value;
+}
+
 .sheet-weapons_name, .sheet-armor_name {
     font-family: var(--default-sans);
     width: 100%;
@@ -283,11 +451,10 @@ div.sheet-weapons, div.sheet-armor {
     width: 100%;
 }
 
-.sheet-ability_scores label, .sheet-combat_stats label {
+.sheet-combat.sheet-header.sheet-label, .sheet-ability.sheet-header.sheet-label {
     /* grid-area: label; */
     font-size: .8rem;
-    text-align: right;
-    align-self: center;
+    text-align: center;
 }
 
 .sheet-effects table {
