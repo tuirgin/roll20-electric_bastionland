@@ -59,7 +59,7 @@
                 <div class="occupation value">
                     <input class="occupation"
                            name="attr_background"
-                           placeholder="Occupation"
+                           placeholder="Enter your Failed Occupation"
                            type="text" />
                 </div>
 
@@ -70,8 +70,8 @@
                 <div class="background_pounds value">
                     <textarea class="background"
                               name="attr_background_pounds"
-                              placeholder="Enter the value from your background’s starting £ table">
-                    </textarea>
+                              placeholder='Enter the info from your failed occupation’s "£" feature table'
+                    ></textarea>
                 </div>
 
                 <div class="background_hp label">
@@ -81,8 +81,8 @@
                 <div class="background_hp value">
                     <textarea class="background"
                               name="attr_background_hp"
-                              placeholder="Enter the value from your background’s starting HP table">
-                    </textarea>
+                              placeholder='Enter the info from your failed occupation’s "HP" feature table'
+                    ></textarea>
                 </div>
 
                 <div class="background_info label">
@@ -91,8 +91,8 @@
 
                 <div class="background_info value">
                     <textarea class="background"
-                              name="attr_background_info">
-                    </textarea>
+                              name="attr_background_info"
+                    ></textarea>
                 </div>
 
             </div>
@@ -114,6 +114,7 @@
                 <div class="currency value">
                     <input class="currency value numeric"
                            name="attr_pounds"
+                           placeholder='Enter your starting Pounds'
                            type="text" />
                 </div>
 
@@ -141,8 +142,8 @@
             </div>
 
             <textarea class="notes"
-                      name="attr_notes">
-            </textarea>
+                      name="attr_notes"
+            ></textarea>
 
         </div>
 
@@ -179,15 +180,13 @@
                 <div class="ability strength max value">
                     <input class="strength max numeric"
                            name="attr_str_max"
-                           type="number"
-                           placeholder=10 />
+                           type="number" />
                 </div>
 
                 <div class="ability strength current value">
                     <input class="cur numeric"
                            name="attr_str"
-                           type="number"
-                           placeholder=10 />
+                           type="number" />
                 </div>
 
                 <div class="ability strength save">
@@ -208,15 +207,13 @@
                 <div class="ability dexterity max value">
                     <input class="dexterity max numeric"
                            name="attr_dex_max"
-                           type="number"
-                           placeholder=10 />
+                           type="number" />
                 </div>
 
                 <div class="ability dexterity current value">
                     <input class="cur numeric"
                            name="attr_dex"
-                           type="number"
-                           placeholder=10 />
+                           type="number" />
                 </div>
 
                 <div class="ability dexterity save">
@@ -237,15 +234,13 @@
                 <div class="ability charisma max value">
                     <input class="charisma max numeric"
                            name="attr_cha_max"
-                           type="number"
-                           placeholder=10 />
+                           type="number" />
                 </div>
 
                 <div class="ability charisma current value">
                     <input class="cur numeric"
                            name="attr_cha"
-                           type="number"
-                           placeholder=10 />
+                           type="number" />
                 </div>
 
                 <div class="ability charisma save">
@@ -307,17 +302,20 @@
 
             </div>
 
-            <div class="effects_grid">
+        </div>
 
-                <div class="effects label">
-                    Effect(s)
-                </div>
+        <div class="effects">
 
-                <div class="effects value">
-                    <input class="effects"
-                           name="attr_effects" />
-                </div>
+            <div class="effects section label">
+                Abilities, Effects, Vulnerabilities
+            </div>
 
+            <div class="effects_items">
+                <fieldset class="repeating_effect">
+                    <input class="effect_name"
+                           name="attr_effect"
+                           type="text"  />
+                </fieldset>
             </div>
 
         </div>

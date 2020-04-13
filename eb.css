@@ -73,6 +73,7 @@
     grid-area: actions;
     grid-gap: 4px;
     grid-template-areas: "stats"
+                         "effects"
                          "weapons"
                          "armor";
 }
@@ -82,9 +83,7 @@
     grid-area: stats;
     grid-gap: 1em;
     grid-template-columns: 3fr 2fr;
-    grid-template-areas: "ability_scores combat_scores"
-                         "effects        effects";
-    grid-template-rows: 4fr 2em;
+    grid-template-areas: "ability_scores combat_scores";
 }
 
 .sheet-ability_scores_grid {
@@ -107,13 +106,6 @@
                          "hp_label           hp_max           hp_cur"
                          "armor_label        armor            armor_blank";
     grid-template-rows: repeat(3, 2.5em);
-}
-
-.sheet-effects_grid {
-    display: grid;
-    grid-area: effects;
-    grid-gap: 4px;
-    grid-template-areas: "effects_label effects_value";
 }
 
 .sheet-weapons_grid {
@@ -173,7 +165,7 @@ input.sheet-numeric, select.sheet-menu{
 
 textarea {
     box-sizing: border-box;
-    height: 3em;
+    height: 5em;
     margin: 0;
     width: 100%;
 }
@@ -317,6 +309,10 @@ div.sheet-action.sheet-section {
     width: 100%;
 }
 
+.sheet-effects{
+    grid-area: effects;
+}
+
 . {
     text-align: center;
 }
@@ -428,12 +424,7 @@ div.sheet-action input {
     grid-area: armor_max;
 }
 
-.sheet-effects.sheet-label {
-    grid-area: effects_label;
-}
-
-.sheet-effects.sheet-value {
-    grid-area: effects_value;
+.sheet-effects.sheet-section {
 }
 
 .sheet-weapons_name, .sheet-armor_name {
@@ -452,7 +443,6 @@ div.sheet-action input {
 }
 
 .sheet-combat.sheet-header.sheet-label, .sheet-ability.sheet-header.sheet-label {
-    /* grid-area: label; */
     font-size: .8rem;
     text-align: center;
 }
@@ -486,7 +476,6 @@ div.sheet-action input {
 
 .sheet-rolltemplate-eb table {
     font-size: 1.2em;
-    /* line-height: 150%; */
     width: 80%;
 }
 
